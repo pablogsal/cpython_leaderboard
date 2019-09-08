@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% if error_message %}
+        <div class="alert alert-danger" role="alert" xmlns="http://www.w3.org/1999/html"> {{ error_message }} </div>
+    {% endif %}
+
+
+    <h1 class="header center orange-text">Pull requests that require your assistance</h1>
+
+    <div class="container center">
+        <div class="section center">
+            <div class="row center">
+                {% for pr in pull_requests %}
+                    <div class="col s12 m6">
+                        <div class="card blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <span class="card-title">PR {{ pr['number'] }}</span>
+                                <p>{{ pr['title'] }}</p>
+                                <br></br>
+                                <p>{{ pr['reason'] }}</p>
+                            </div>
+                            <div class="card-action">
+                                <a href="{{ pr['html_url'] }}">View Pull Request on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
