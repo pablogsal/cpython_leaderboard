@@ -62,7 +62,7 @@ def is_pr_valid(pr):
 
 
 async def get_merged_prs(gh_api, *, since, core_devs=None):
-    query = f"search/issues?q=is:merged+is:pr+repo:python/cpython+base:master+merged:>={since}"
+    query = f"search/issues?q=is:merged+is:pr+repo:python/cpython+repo:python/peps+repo:python/devguide+repo:python/the-knights-who-say-ni+repo:python/bedevere+base:master+merged:>={since}"
     futures = []
     prs = []
     async for pr in gh_api.getiter(query):
